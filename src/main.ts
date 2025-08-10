@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { TypedConfigService } from './config/typed-config.service';
 import { AllExceptionsFilter } from './common/all-exception.filter';
 import { LoggerService } from './logger/logger.service';
+import { SwaggerModuleSetup } from './swagger/swagger.module';
 
 async function bootstrap(): Promise<void> {
   const logger = new LoggerService();
@@ -15,6 +16,8 @@ async function bootstrap(): Promise<void> {
   const port = configService.get('PORT') ?? 3000;
 
   app.useGlobalFilters(new AllExceptionsFilter(logger));
+
+  SwaggerModuleSetup.setup(app);
 
   await app.listen(port);
 
