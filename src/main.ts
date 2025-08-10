@@ -23,7 +23,7 @@ async function bootstrap(): Promise<void> {
 
   await app.listen(port);
 
-  console.log(`🪄  Server started on port ${port} `);
+  console.log(`🪄  Server started on port ${port}`);
 }
 
 bootstrap().catch((err) => {
