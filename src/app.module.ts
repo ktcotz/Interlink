@@ -5,6 +5,7 @@ import { TypedConfigService } from './config/typed-config.service';
 import { HealthModule } from './health/health.module';
 import { minutes, ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { APP_GUARD } from '@nestjs/core';
         },
       ],
     }),
+    PrismaModule,
     HealthModule,
   ],
   controllers: [],
