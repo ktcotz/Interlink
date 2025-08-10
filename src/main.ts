@@ -4,6 +4,7 @@ import { TypedConfigService } from './config/typed-config.service';
 import { AllExceptionsFilter } from './common/all-exception.filter';
 import { LoggerService } from './logger/logger.service';
 import { SwaggerModuleSetup } from './swagger/swagger.module';
+import helmet from 'helmet';
 
 async function bootstrap(): Promise<void> {
   const logger = new LoggerService();
@@ -16,6 +17,7 @@ async function bootstrap(): Promise<void> {
   const port = configService.get('PORT') ?? 3000;
 
   app.useGlobalFilters(new AllExceptionsFilter(logger));
+  app.use(helmet());
 
   SwaggerModuleSetup.setup(app);
 
